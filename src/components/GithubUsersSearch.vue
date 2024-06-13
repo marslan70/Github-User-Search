@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 const username = ref('')
 const userProfile = ref(null)
@@ -13,13 +13,13 @@ const getUserProfile = async () => {
         if(response.ok){
             userProfile.value = data
             error.value = null
-        }else{
+        } else{
             userProfile.value = null
             error.value = `Error: ${data.message}`
         }
     } catch (err) {
-        console.error('Error fetching data', err)
-        error.value = 'An error occured while fetching data'
+        console.error("Error fetching data:", err)
+        error.value = "An error occurred while fetching data"
     }
 }
 </script>
@@ -29,7 +29,7 @@ const getUserProfile = async () => {
     <h1 class="app-title">Github User Profile</h1>
 
     <div class="input-container">
-        <input v-model="username" placeholder="Enter github username" @input="gitUserProfile">
+        <input v-model="username" placeholder="Enter github username" @input="getUserProfile">
     </div>
 
     <div v-if="userProfile" class="user-profile">
